@@ -1,0 +1,139 @@
+<!-- contact banner area srart -->
+<div class="contact-banner-area-start rts-section-gap" style="background: url('../../../assets/images/page2.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- banner main inner contact areas start -->
+                <div class="banner-inner-area-contact-inner">
+                    <h1 class="title skew-up-2" data-aos="zoom-in" data-aos-duration="1000"><span>Contact Us</span></h1>
+                </div>
+                <!-- banner main inner contact areas end -->
+            </div>
+        </div>
+    </div>
+    <!-- <div class="shape-area">
+        <img src="assets/images/product/shape/01.png" alt="" class="one" />
+        <img src="assets/images/product/shape/02.png" alt="" class="two" />
+        <img src="assets/images/product/shape/03.png" alt="" class="three" />
+        <img src="assets/images/product/shape/04.png" alt="" class="four" />
+    </div> -->
+</div>
+<!-- contact banner area end -->
+
+<div class="rts-contact-form-area contact-form-page rts-section-gapBottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <form [formGroup]="contactForm" (ngSubmit)="OnFormSubmit()" class="contact-form">
+                    <div class="single-input-area">
+                        <label for="name">Full name</label>
+                        <input id="name" formControlName="name" type="text" placeholder="Your name" />
+                        <i class="fa-regular fa-user"></i>
+                    </div>
+                    <div class="danger" *ngIf="name?.invalid && (name?.touched && submitted)">
+                        Name is required
+                    </div>
+
+                    <div class="single-input-area">
+                        <label for="email">Email address</label>
+                        <input id="email" formControlName="email" type="text" placeholder="Your email" />
+                        <i class="fa-regular fa-envelope"></i>
+                    </div>
+                    <div *ngIf="(submitted && email?.invalid) && email?.touched" class="text-danger small">
+                        <div>Email is required.</div>
+                    </div>
+
+                    <!-- <div class="single-input-area">
+                        <label for="company">Company (Optional)</label>
+                        <input id="company" formControlName="company" type="text" placeholder="Your company's name" />
+                        <i class="fa-regular fa-user"></i>
+                    </div>
+
+                    <div class="single-input-area">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input id="phoneNumber" formControlName="phoneNumber" type="text"
+                            placeholder="Your phone number" />
+                        <i class="fa-regular fa-user"></i>
+                    </div> -->
+                    <div *ngIf="(submitted && phoneNumber?.invalid) && phoneNumber?.touched" class="text-danger small">
+                        Phone number is required and must be numeric.
+                    </div>
+
+                    <div class="single-input-area text-area">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" formControlName="message" placeholder="Your message"></textarea>
+                        <i class="fa-regular fa-message"></i>
+                    </div>
+                    <div *ngIf="(submitted && message?.invalid) && message?.touched" class="text-danger small">
+                        Message is required.
+                    </div>
+
+                    <button type="submit" class="rts-btn btn-primary">
+                        Send message <i class="fa-solid fa-location-arrow"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- rts single contact area start -->
+<div class="rts-contact-single-area rts-section-gap2Bottom pt--120">
+    <div class="container">
+        <div class="row g-48">
+            <div class="col-lg-4 col-md-4 col-sm-6" data-aos="fade-right" data-aos-duration="1000">
+                <!-- single contact area start -->
+                <div class="single-contact-inner-info">
+                    <div class="icon">
+                        <img src="assets/images/contact/01.svg" alt="service" />
+                    </div>
+                    <h5 class="title">Address</h5>
+                    <p>Km 7, New Ife Road, Ibadan, Nigeria</p>
+                </div>
+                <!-- single contact area end -->
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6" data-aos="zoom-in" data-aos-duration="1000">
+                <!-- single contact area start -->
+                <div class="single-contact-inner-info mid">
+                    <div class="icon">
+                        <img src="assets/images/contact/02.svg" alt="service" />
+                    </div>
+                    <h5 class="title">Email</h5>
+                    <p><a href="mailto:Admin@premiumcpaleads.com">Admin&#64;premiumcpaleads.com</a></p>
+                </div>
+                <!-- single contact area end -->
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6" data-aos="fade-left" data-aos-duration="1000">
+                <!-- single contact area start -->
+                <div class="single-contact-inner-info">
+                    <div class="icon">
+                        <img src="assets/images/contact/03.svg" alt="service" />
+                    </div>
+                    <h5 class="title">Phone</h5>
+                    <p><a href="tel:23481467882">+234 814 67882</a></p>
+                </div>
+                <!-- single contact area end -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- rts single contact area end -->
+
+<!-- Bootstrap Modal -->
+<div #feedbackModal class="modal fade" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+            <div class="modal-header">
+                <h5 class="modal-title" id="feedbackModalLabel">
+                    {{ isSuccess ? "Success" : "Error" }}
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p [ngClass]="{ 'text-success': isSuccess, 'text-danger': !isSuccess }">
+                    {{ feedbackMessage }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
